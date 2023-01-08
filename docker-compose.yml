@@ -1,15 +1,16 @@
 version: '3.2'
 services:
   rabbitmq:
-    image: rabbitmq:3-management-alpine
-    container_name: 'rabbitmq'
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    hostname: sales_rabbit
     ports:
-        - 5672:5672
-        - 15672:15672
-    networks:
-      - rabbitmq_curso
+      - 5672:5672
+      - 25676:25676
+      - 15672:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
 
-networks:
-  rabbitmq_curso:
-   driver: bridge
+
 
